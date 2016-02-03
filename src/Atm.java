@@ -10,8 +10,8 @@ public class Atm {      //Simple atm mimic which will ask for username and offer
 
     public static void main(String[] args) throws Exception {
         UserInput userInput = new UserInput();
-        userInput.enterName();
-        userInput.enterSelection();
-    }
+        userInput.enterName();                  //asks for user name, throws exception if nothing input
+        userInput.enterSelection();             //queries what the user wants to do, such as withdraw funds,
+    }                                           //balance inquiry, or cancel transaction
 }
 
