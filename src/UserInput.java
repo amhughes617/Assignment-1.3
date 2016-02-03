@@ -29,7 +29,7 @@ public class UserInput {        //this class holds methods that handle user inpu
         else if(selection.equals("2")) {        //allows user to withdraw
             System.out.println("How much much money would you like to withdraw?");
             howMuch = Atm.scanner.nextLine();
-            int howMuchInt = Integer.valueOf(howMuch);
+            int howMuchInt = Integer.valueOf(howMuch);  //converts money input howMuch from string to int
             if(howMuchInt > 100) {
                 throw new Exception("Insufficient funds!");
             }
