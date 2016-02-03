@@ -24,8 +24,8 @@ public class UserInput {        //this class holds methods that handle user inpu
         System.out.println("2. Withdraw Funds");
         System.out.println("3. Cancel Transaction");
         System.out.println("Please enter the number corresponding to your selection...");
-        selection = Atm.scanner.nextLine();
 
+        selection = Atm.scanner.nextLine();
         if(selection.equals("1")) {             //prints the user's balance
             System.out.println("Your balance is $" + balance);
         }
