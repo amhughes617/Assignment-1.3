@@ -6,59 +6,49 @@ import java.util.HashMap;
  */
 public class UserAccount {        //this class holds methods that handle user input
     String name;
-    double balance = 0.0;
+    double balance;
     String selection;
-    HashMap<String, Double> accounts = new HashMap<>();
+
 
     public void enterName() throws Exception {
-        while (true) {
-            System.out.println("Would you like to login? [y/n]");
-            String loginQ = Atm.scanner.nextLine();
-            while (true) {
-                switch (loginQ) {
-                    case "y":
-                        accounts.put(name, balance);
-                        System.out.println("Please enter your name.");
-                        name = Atm.scanner.nextLine();
-                        if (name.isEmpty()) {
-                            throw new Exception("User must enter a name.");
-                        } else if (!accounts.containsKey(name)) {
-                            while (true) {
-                                System.out.println("Would you like to create a new account? [y/n]");
-                                String makeAccount = Atm.scanner.nextLine();
-                                switch (makeAccount) {
-                                    case "y":
-                                        accounts.put(name, balance);
-                                        break;
-                                    case "n":
-                                        System.out.println("Have a nice da!");
-                                        System.exit(0);
-                                        break;
-                                    default:
-                                        System.out.println("Incorrect Response");
-                                }
-                                break;
-                            }
-                        }
-                        System.out.println("Welcome " + name);
-                        break;
-                    case "n":
-                        System.out.println("Have a nice day!");
-                        System.exit(0);
-                    default:
-                        System.out.println("Incorrect Response");
-                }
-                break;
+        name = null;
+        System.out.println("Please enter your name.");
+        name = Atm.scanner.nextLine();
+        if (name.isEmpty()) {
+            throw new Exception("User must enter a name.");
+        } else if (!Atm.accounts.containsKey(name)) {
+            System.out.println("Would you like to create a new account? [y/n]");
+            String makeAccount = Atm.scanner.nextLine();
+            switch (makeAccount) {
+                case "y":
+                    Atm.accounts.put(name, balance);
+                    System.out.println("Welcome " + name);
+                    break;
+                case "n":
+                    System.out.println("Have a nice day!");
+                    enterName();
+                    break;
+                default:
+                    System.out.println("Incorrect Response");
+                    enterName();
+                    break;
             }
-            break;
         }
+        else {
+            System.out.println("Welcome " + name);
+            balance = Atm.accounts.get(name);
         }
+    }
+
+
+
     public void enterSelection() throws Exception {     //takes user input
         System.out.println("Would you like to...");
         System.out.println("1. Check Balance");
         System.out.println("2. Deposit Funds");
         System.out.println("3. Withdraw Funds");
         System.out.println("4. Cancel Transaction");
+        System.out.println("5. Delete Account");
         System.out.println("Please enter the number corresponding to your selection...");
 
         selection = Atm.scanner.nextLine();
@@ -83,8 +73,14 @@ public class UserAccount {        //this class holds methods that handle user in
             System.out.println("Please take your money.");
             System.out.println("Remaining balance = $" + String.format("%.2f", balance));  //forces it to print 2 decimal places for balance
         }
-        else if(selection.equals("4")) {            //cancels transaction
+        else if(selection.equals("4")) {        //cancels transaction
+            Atm.accounts.put(name, balance);
             System.out.println("Thank you please come again.");
+        }
+        else if(selection.equals("5")) {
+            Atm.accounts.remove(name);
+            //balance = 0.0;          //when i tried to remove balance from HashMap with remove(name, balance), it wouldn't work
+            System.out.println("Your account has been deleted.");
         }
         else {
             throw new Exception("Invalid Response!");

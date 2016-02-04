@@ -7,14 +7,15 @@ import java.util.Scanner;
  */
 public class Atm {      //Simple atm mimic which will ask for username and offer balance check and withdrawal options
     public static Scanner scanner = new Scanner(System.in);
+    public static HashMap<String, Double> accounts = new HashMap<>();
 
     public static void main(String[] args) throws Exception {
-        UserAccount account = new UserAccount();
         while (true) {
+            UserAccount account = new UserAccount();
             account.enterName();
             while (true) {
                 account.enterSelection();
-                if (account.selection.equals("4"))
+                if (account.selection.equals("4") || account.selection.equals("5"))
                     break;
             }
         }
