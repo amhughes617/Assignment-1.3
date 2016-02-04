@@ -1,5 +1,4 @@
-import com.sun.tools.doclets.formats.html.SourceToHTMLConverter;
-
+import java.util.HashMap;
 import java.util.Scanner;
 
 //trying something
@@ -10,9 +9,27 @@ public class Atm {      //Simple atm mimic which will ask for username and offer
     public static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) throws Exception {
-        UserInput userInput = new UserInput();
-        userInput.enterName();                  //asks for user name, throws exception if nothing input
-        userInput.enterSelection();             //queries what the user wants to do, such as withdraw funds,
-    }                                           //balance inquiry, or cancel transaction
+        UserAccount account = new UserAccount();
+        while (true) {
+            account.enterName();
+            while (true) {
+                account.enterSelection();
+                if (account.selection.equals("4"))
+                    break;
+            }
+        }
+
+
+     //   while (account.selection.equals("4") == false) {}
+
+    }
+
+
 }
 
+
+
+
+//asks for user name, throws exception if nothing input
+//queries what the user wants to do, such as withdraw funds,
+//balance inquiry, or cancel transaction
