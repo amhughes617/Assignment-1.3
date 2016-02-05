@@ -5,9 +5,9 @@ import java.util.HashMap;
  * Created by alexanderhughes on 2/3/16.
  */
 public class UserAccount {        //this class holds methods that handle user input
-    String name;
-    double balance;
-    String selection;
+    public static String name;
+    public static double balance;
+    public static String selection;
 
 
     public void enterName() throws Exception {

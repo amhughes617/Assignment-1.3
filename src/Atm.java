@@ -13,8 +13,9 @@ public class Atm {      //Simple atm mimic which will ask for username and offer
         while (true) {
             UserAccount account = new UserAccount();
             account.enterName();
+            BalanceMgmt balanceMgmt = new BalanceMgmt();
             while (true) {
-                account.enterSelection();
+                balanceMgmt.enterSelection();
                 if (account.selection.equals("4") || account.selection.equals("5"))
                     break;
             }
