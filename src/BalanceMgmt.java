@@ -1,8 +1,8 @@
 /**
  * Created by alexanderhughes on 2/4/16.
  */
-public class BalanceMgmt {
-    public void enterSelection(UserAccount account) throws Exception {     //takes user input
+public class BalanceMgmt {      //would rather call this AccountMgmt
+    public static void enterSelection(UserAccount account) throws Exception {     //takes user input
         System.out.println("Would you like to...");
         System.out.println("1. Check Balance");
         System.out.println("2. Deposit Funds");
@@ -26,9 +26,12 @@ public class BalanceMgmt {
             System.out.println("How much much money would you like to withdraw?");
             String howMuch = account.scanner.nextLine();
             double howMuchDouble = Double.valueOf(howMuch);  //converts money input howMuch from string to int
-            if(howMuchDouble > account.balance) {        //float is bad for money
-                throw new Exception("Insufficient funds!");
+            if (howMuchDouble < 0) {
+                throw new Exception("STAHP STEALING YOU BASTARD!!!");
             }
+            else if (howMuchDouble > account.balance) {        //float is bad for money
+                throw new Exception("Insufficient funds!");
+                }
             account.balance-= howMuchDouble;
             System.out.println("Please take your money.");
             System.out.println("Remaining balance = $" + String.format("%.2f", account.balance));  //forces it to print 2 decimal places for balance
