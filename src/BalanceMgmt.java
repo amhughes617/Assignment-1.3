@@ -42,7 +42,6 @@ public class BalanceMgmt {      //would rather call this AccountMgmt
         }
         else if(account.selection.equals("5")) {
             account.accounts.remove(account.name);
-            //balance = 0.0;          //when i tried to remove balance from HashMap with remove(name, balance), it wouldn't work
             System.out.println("Your account has been deleted.");
         }
         else {
