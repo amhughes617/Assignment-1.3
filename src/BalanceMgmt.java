@@ -27,7 +27,7 @@ public class BalanceMgmt {      //would rather call this AccountMgmt
             String howMuch = account.scanner.nextLine();
             double howMuchDouble = Double.valueOf(howMuch);  //converts money input howMuch from string to int
             if (howMuchDouble < 0) {
-                throw new Exception("STAHP STEALING YOU BASTARD!!!");
+                throw new Exception("STAHP STEALING!!!");
             }
             else if (howMuchDouble > account.balance) {        //float is bad for money
                 throw new Exception("Insufficient funds!");
