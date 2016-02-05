@@ -11,7 +11,7 @@ public class Atm {      //Simple atm mimic which will ask for username and offer
 
     public static void main(String[] args) throws Exception {
         while (true) {
-            UserAccount account = new UserAccount();
+            UserAccount account = new UserAccount();    //reatse a new UserAccount object to be used by EnterName and BalMgmt
             EnterName login = new EnterName();
             login.enterName(account);
             BalanceMgmt balanceMgmt = new BalanceMgmt();
